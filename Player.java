@@ -1,47 +1,44 @@
+package game;
+
 import java.util.ArrayList;
 
 public class Player {
-    private String name;
-    private ArrayList<Cards> cards;
-    private int numberOfCards;
+    private String name; // Player's name
+    private ArrayList<Cards> cards; // Player's deck of cards
 
-    // Constructor
+    // Constructor to create a new player with a given name
     public Player(String name) {
         this.name = name;
-        this.cards = new ArrayList<Cards>();
-        this.numberOfCards = 0;
+        this.cards = new ArrayList<>(); // Initialize the player's deck
     }
 
-    // Getters
+    // Getter for the player's name
     public String getName() {
         return name;
     }
 
+    // Getter for the player's deck of cards
     public ArrayList<Cards> getCards() {
         return cards;
     }
 
-    public int getNumberOfCards() {
-        return numberOfCards;
-    }
-
-    // Setters
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setCards(ArrayList<Cards> cards) {
-        this.cards = cards;
-        this.numberOfCards = cards.size();
-    }
-
+    // Add a single card to the player's deck
     public void addCard(Cards card) {
         this.cards.add(card);
-        this.numberOfCards++;
     }
 
-    public void removeCard(Cards card) {
-        this.cards.remove(card);
-        this.numberOfCards--;
+    // Add multiple cards to the player's deck
+    public void addCards(ArrayList<Cards> cards) {
+        this.cards.addAll(cards);
+    }
+
+    // Play the top card from the player's deck
+    public Cards playCard() {
+        return this.cards.remove(0);
+    }
+
+    // Check if the player has any cards left in their deck
+    public boolean hasCards() {
+        return!this.cards.isEmpty();
     }
 }
